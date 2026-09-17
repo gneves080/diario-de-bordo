@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Registre e acompanhe suas atividades diárias, mesmo sem internet.">
+  <meta name="theme-color" content="#123b36">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <title>Diário de Bordo</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Diário de Bordo - início">
+        <span class="brand-mark" aria-hidden="true">DB</span>
+        <span class="brand-name">Diário de Bordo</span>
+      </a>
+      <div class="topbar-actions">
+        <span class="offline-status" id="connection-status"><span class="status-dot"></span>Online</span>
+        <button class="install-button" id="install-button" type="button" hidden>Instalar app</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Seu registro pessoal</p>
+          <h1 id="page-title">O dia merece<br><em>ser lembrado.</em></h1>
+          <p class="hero-copy">Anote o que aconteceu, o que importa e o que você quer levar adiante.</p>
+        </div>
+        <div class="hero-stamp" aria-hidden="true">
+          <span>EST. 2026</span>
+          <strong>✦</strong>
+          <span>OFFLINE FIRST</span>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Área de registros">
+        <div class="entry-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Novo registro</p>
+              <h2>Como foi o seu dia?</h2>
+            </div>
+            <span class="entry-number" id="entry-number">01</span>
+          </div>
+
+          <form id="entry-form">
+            <label for="entry-title">Título</label>
+            <input id="entry-title" name="title" type="text" maxlength="80" placeholder="Ex.: Uma manhã produtiva" required>
+
+            <label for="entry-description">Descrição</label>
+            <textarea id="entry-description" name="description" rows="5" maxlength="500" placeholder="Escreva algumas linhas sobre o seu dia..." required></textarea>
+
+            <div class="form-row">
+              <div class="date-field">
+                <label for="entry-date">Data</label>
+                <input id="entry-date" name="date" type="date" required>
+              </div>
+              <button class="primary-button" type="submit"><span>Salvar entrada</span><span aria-hidden="true">↗</span></button>
+            </div>
+            <p class="form-note"><span aria-hidden="true">⌁</span> Salvo no dispositivo. Funciona sem internet.</p>
+          </form>
+        </div>
+
+        <div class="entries-panel">
+          <div class="entries-header">
+            <div>
+              <p class="section-kicker">Sua trajetória</p>
+              <h2>Entradas recentes <span id="entry-count">(0)</span></h2>
+            </div>
+            <button class="sort-button" id="sort-button" type="button" aria-label="Alternar ordem das entradas">Mais recentes <span aria-hidden="true">↕</span></button>
+          </div>
+          <div class="entries-list" id="entries-list" aria-live="polite"></div>
+          <div class="empty-state" id="empty-state">
+            <div class="empty-icon" aria-hidden="true">✎</div>
+            <h3>Seu diário começa aqui</h3>
+            <p>A primeira entrada é sempre a mais especial.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><span>Diário de Bordo</span><span>Registros que ficam.</span></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
